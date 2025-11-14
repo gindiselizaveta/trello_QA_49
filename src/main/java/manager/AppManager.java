@@ -8,6 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import java.lang.reflect.Method;
+import utils.WDListener;
 
 public class AppManager {
     private WebDriver driver;
@@ -23,6 +24,8 @@ public class AppManager {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         logger.info("Start test--> " + method.getName());
+
+
     }
 
     @AfterMethod(enabled = false)

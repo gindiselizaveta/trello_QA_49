@@ -1,15 +1,19 @@
 package tests;
 
+import data_provider.DataProviderBoards;
 import dto.Board;
 import dto.User;
 import manager.AppManager;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.*;
+import utils.TestNGListener;
 
 import java.util.Random;
 
+@Listeners(TestNGListener.class)
 public class BoardsTests extends AppManager {
 
     @BeforeMethod
@@ -38,5 +42,13 @@ public class BoardsTests extends AppManager {
         boardsPage.createNewBoard(board);
         boardsPage.btnCreateIsNotClickable();
         Assert.assertTrue(boardsPage.btnCreateIsNotClickable());
+    }
+
+    @Test(dataProvider = "newBoardDP", dataProviderClass = DataProviderBoards.class)
+    public void createNewBoardPositiveDP(Board board) {
+        BoardsPage boardsPage = new BoardsPage(getDriver());
+        boardsPage.createNewBoard(board);
+        boardsPage.clickBtnCreate();
+        Assert.assertTrue(new MyBoardPage(getDriver()).validateBoardName(board.getBoardTitle()));
     }
 }

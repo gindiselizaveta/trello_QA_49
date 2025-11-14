@@ -27,7 +27,7 @@ public class BasePage {
     }
 
     public void clickWait(WebElement element) {
-        new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.elementToBeClickable(element)).click();
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
     public boolean validateTextInElement(WebElement element, String text) {
