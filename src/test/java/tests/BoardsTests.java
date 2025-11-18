@@ -51,4 +51,12 @@ public class BoardsTests extends AppManager {
         boardsPage.clickBtnCreate();
         Assert.assertTrue(new MyBoardPage(getDriver()).validateBoardName(board.getBoardTitle()));
     }
+
+    @Test(dataProvider = "newBoardDPFromFile", dataProviderClass = DataProviderBoards.class)
+    public void createNewBoardPositiveDPFromFile(Board board) {
+        BoardsPage boardsPage = new BoardsPage(getDriver());
+        boardsPage.createNewBoard(board);
+        boardsPage.clickBtnCreate();
+        Assert.assertTrue(new MyBoardPage(getDriver()).validateBoardName(board.getBoardTitle()));
+    }
 }

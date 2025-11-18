@@ -45,7 +45,7 @@ public class TestNGListener implements ITestNGListener, ITestListener {
     @Override
     public void onStart(ITestContext context) {
         ITestListener.super.onStart(context);
-        logger.info("Stert testing info: " + context.getStartDate());
+        logger.info("Start testing info: " + context.getStartDate());
     }
 
     @Override

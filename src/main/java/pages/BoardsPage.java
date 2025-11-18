@@ -29,6 +29,12 @@ public class BoardsPage extends BasePage {
     @FindBy(xpath = "//span[@class='VmbXKMJLSqfD0U']")
     WebElement popUpMessageDelete;
 
+    @FindBy(xpath = "//*[@data-testid='header-member-menu-avatar']")
+    WebElement iconAccount;
+
+    @FindBy(xpath = "//span[text()='Manage account']")
+    WebElement btnManageAccount;
+
     public void createNewBoard(Board board) {
         clickWait(btnCreateNewBoard);
         clickWait(inputBoardTitle);
@@ -61,6 +67,12 @@ public class BoardsPage extends BasePage {
 
     public boolean validatePopUpMessage(String text) {
         return validateTextInElement(popUpMessageDelete, text);
+    }
+
+    public void openMyAccount() {
+        //iconAccount.click();
+        clickWait(iconAccount);
+        clickWait(btnManageAccount);
     }
 
 }
